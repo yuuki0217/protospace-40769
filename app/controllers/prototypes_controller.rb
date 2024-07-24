@@ -1,5 +1,5 @@
 class PrototypesController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :edit, :destrou]
+  before_action :authenticate_user!, only: [:new, :edit, :destroy]
   before_action :move_to_index, except:  [:index, :show, :new, :create, :update, :destroy]
 
   def index
@@ -31,7 +31,7 @@ class PrototypesController < ApplicationController
     if @prototype.update(prototype_params)
       redirect_to '/'
     else
-      render :new, status: :unprocessable_entity
+      render :edit, status: :unprocessable_entity
     end
 
   end
